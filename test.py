@@ -34,5 +34,26 @@ if response.json()['success']:
         print("JSON du jeu:", game_json)
     else:
         print(f"Erreur {get_game_response.status_code}: {get_game_response.json()}")
+
+    kwargs = {"t0":0,"field":2,"navy":0,"para":0}
+    act = {"name" :"Deploy","kwargs" :kwargs}
+    json_data = {"action": "action", "acts" :[act]}
+    response = requests.post(server_url, json=json_data)
+
+    for i in range(4):
+        print(players[i])
+        if not players[i]["bot"] :
+            json_data = {"action": "validate", "player_id": i}
+            response = requests.post(server_url, json=json_data)
+            print(response)
+            game_json = get_game_response.json()
+
+    print("Json du jeu final")
+    get_game_response = requests.get(f'{server_url}/get_game_json')
+    game_json = get_game_response.json()
+    print("JSON du jeu:", game_json)
+
+# Envoi de la requête POST au serveur
+
 else:
     print("Échec du lancement du jeu")
