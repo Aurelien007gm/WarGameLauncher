@@ -2,7 +2,7 @@ import requests
 import json
 
 # Configuration du client
-server_url = 'http://127.0.0.1:8000'  # Remplacez par l'adresse du serveur
+server_url = 'http://127.0.0.1:33800'  # Remplacez par l'adresse du serveur
 
 print("Entrer le nombre de joueurs")
 nb_joueurs = int(input())
